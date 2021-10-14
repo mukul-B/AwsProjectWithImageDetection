@@ -16,20 +16,21 @@ public class SQSExample {
 
 
     public static void main(String[] args) {
-        String queueName = "queue" + System.currentTimeMillis();
+        String queueName = "queueM" ;
+        //+ System.currentTimeMillis();
 
         SqsClient sqsClient = SqsClient.builder()
                 .region(Region.US_WEST_2)
                 .build();
 
         // Perform various tasks on the Amazon SQS queue
-        String queueUrl= createQueue(sqsClient, queueName );
+//        String queueUrl= createQueue(sqsClient, queueName );
         listQueues(sqsClient);
-        listQueuesFilter(sqsClient, queueUrl);
-        List<Message> messages = receiveMessages(sqsClient, queueUrl);
-        sendBatchMessages(sqsClient, queueUrl);
-        changeMessages(sqsClient, queueUrl, messages);
-        deleteMessages(sqsClient, queueUrl,  messages) ;
+//        listQueuesFilter(sqsClient, queueUrl);
+//        List<Message> messages = receiveMessages(sqsClient, queueUrl);
+//        sendBatchMessages(sqsClient, queueUrl);
+//        changeMessages(sqsClient, queueUrl, messages);
+//        deleteMessages(sqsClient, queueUrl,  messages) ;
         sqsClient.close();
     }
 
@@ -74,6 +75,7 @@ public class SQSExample {
             ListQueuesResponse listQueuesResponse = sqsClient.listQueues(listQueuesRequest);
 
             for (String url : listQueuesResponse.queueUrls()) {
+                DeleteQueueRequest d= DeleteQueueRequest.builder().queueUrl(url).build();
                 System.out.println(url);
             }
 
