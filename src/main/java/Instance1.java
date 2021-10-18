@@ -10,9 +10,13 @@ public class Instance1 {
         try {
             S3 s3 = new S3();
             List<String> labels = s3.ListObject();
+            labels.add("-1");
             for (String os : labels) {
-                float confidence = fg.getLabelsfromImage("unr-cs442", os);
 
+                float confidence = 100;
+                if(! os.equals("-1")){
+                    confidence=fg.getLabelsfromImage("unr-cs442", os);
+                }
                 if (confidence > 90) {
                     System.out.println("sending" + os + "with : " + confidence);
                     sw.sendMessage(queueName, os);
@@ -25,8 +29,9 @@ public class Instance1 {
                     Thread.currentThread().interrupt();
                 }
             }
-            sw.sendMessage(queueName, "-1");
+
         } finally {
+
             sw.closeConnection();
             fg.closeRek();
         }

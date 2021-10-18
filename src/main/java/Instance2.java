@@ -11,24 +11,25 @@ public class Instance2 {
         sqstest sw = new sqstest();
         S3 s3 = new S3();
         DetectText dt =new DetectText();
-        int end=-1;
+        int end=0;
         List<ImageText> ims = new ArrayList<ImageText>();
         try {
             for (int i = 0; i < 30; i++) {
+
                 List<Message> messages = sw.receiveMessages("queueM");
+                System.out.println(messages.size()+" message received");
                 for (Message message : messages) {
                     System.out.println(message.body());
 
                     if(message.body().equals("-1"))
                         end=-1;
                     else{
-                        end=0;
-                        sw.deleteMessage("queueM", message);
                         s3.GetObject(message.body());
                         String sourceImage = "output/" + message.body();
                         List<Textid> hop= dt.detectTextLabels(sourceImage );
                         ims.add(new ImageText(message.body(),hop));
                     }
+                    sw.deleteMessage("queueM", message);
 
                 }
                 try {
@@ -45,6 +46,9 @@ public class Instance2 {
             dt.recClose();
             sw.closeConnection();
         }
-        System.out.println(ims);
+
+        for (ImageText im : ims){
+            System.out.println(im);
+        }
     }
 }

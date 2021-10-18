@@ -90,9 +90,8 @@ public class S3 {
         System.out.format("Downloading %s from S3 bucket %s...\n", key_name, bucket_name);
         final AmazonS3 s3 = AmazonS3ClientBuilder.standard().withRegion(Regions.DEFAULT_REGION).build();
         try {
-            System.out.println("hello");
+
             S3Object o = s3.getObject(bucket_name, key_name);
-            System.out.println("hello");
             S3ObjectInputStream s3is = o.getObjectContent();
             FileOutputStream fos = new FileOutputStream(new File("output/"+key_name));
             byte[] read_buf = new byte[1024];

@@ -136,8 +136,6 @@ public class sqstest {
 
     public   List<Message> receiveMessages( String queueUrl) {
 
-        System.out.println("\nReceive messages");
-
         try {
             // snippet-start:[sqs.java2.sqs_example.retrieve_messages]
             ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder()
