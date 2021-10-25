@@ -1,8 +1,14 @@
 import software.amazon.awssdk.services.sqs.model.Message;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static java.lang.System.exit;
 
 public class Instance2 {
 
@@ -14,7 +20,7 @@ public class Instance2 {
         int end=0;
         List<ImageText> ims = new ArrayList<ImageText>();
         try {
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < 50; i++) {
 
                 List<Message> messages = sw.receiveMessages("queueM");
                 System.out.println(messages.size()+" message received");
@@ -46,9 +52,28 @@ public class Instance2 {
             dt.recClose();
             sw.closeConnection();
         }
-
+        String fileContent="";
         for (ImageText im : ims){
             System.out.println(im);
+            fileContent=fileContent+im.imageid+"\n";
+            for (Textid txt : im.getTextid()) {
+                fileContent=fileContent+"\t"+txt.textid+":"+txt.text+"\n";
+            }
+            }
+
+
+
+        try{usingFileWriter(fileContent);}
+        catch(IOException ie){
+            exit(1);
         }
+    }
+    public static void usingFileWriter(String fileContent ) throws IOException
+    {
+
+
+        FileWriter fileWriter = new FileWriter("output/outputfile.txt");
+        fileWriter.write(fileContent);
+        fileWriter.close();
     }
 }
