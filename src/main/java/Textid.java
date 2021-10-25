@@ -17,7 +17,6 @@ class Textid {
     }
 
 
-
     public int getTextid() {
         return textid;
     }

@@ -17,8 +17,8 @@ mvn package
 scp -i Downloads/instance.pem  /home/muku/IdeaProjects/FirstAwsproject/target/FirstAwsproject-1.0-SNAPSHOT-jar-with-dependencies.jar ec2-user@ec2-xx-xx-xx-xxx.xx-xx-1.compute.amazonaws.com:~
 
 run application on Instane 1:
-java -cp /home/muku/IdeaProjects/FirstAwsproject/target/FirstAwsproject-1.0-SNAPSHOT-jar-with-dependencies.jar Instance1
+java -cp /home/muku/IdeaProjects/FirstAwsproject/target/FirstAwsproject-1.0-SNAPSHOT-jar-with-dependencies.jar Instance1CarRec
 
-run application on Instance2:
-java -cp /home/muku/IdeaProjects/FirstAwsproject/target/FirstAwsproject-1.0-SNAPSHOT-jar-with-dependencies.jar Instance2
+run application on Instance2TextRec:
+java -cp /home/muku/IdeaProjects/FirstAwsproject/target/FirstAwsproject-1.0-SNAPSHOT-jar-with-dependencies.jar Instance2TextRec
 

@@ -17,7 +17,6 @@ public class ImageText {
         this.textid = textid;
     }
 
-
     public String getImageid() {
         return imageid;
     }
@@ -28,10 +27,6 @@ public class ImageText {
 
     @Override
     public String toString() {
-        return "ImageText{" +
-                "imageid='" + imageid + '\'' +
-                ", textid=" + textid +
-                '}';
+        return "ImageText{imageid='" + imageid + '\'' + ", textid=" + textid + '}';
     }
 }
-

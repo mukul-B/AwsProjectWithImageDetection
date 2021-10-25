@@ -11,7 +11,7 @@
 <artifactId>FirstAwsproject</artifactId>
 <packaging>jar</packaging>
 <version>1.0-SNAPSHOT</version>
-<name>myapp</name>
+<name>FirstAwsproject</name>
 <dependencyManagement>
     <dependencies>
         <dependency>
