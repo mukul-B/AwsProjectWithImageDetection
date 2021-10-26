@@ -9,7 +9,7 @@ import static java.lang.System.exit;
 
 public class Instance2TextRec {
     public static void main(String[] args) {
-        String queueName = "queueM";
+        String queueName = "queueCarImages";
         String bucketName="unr-cs442";
         SQSOperations sw = new SQSOperations();
         S3Operations s3 = new S3Operations(bucketName);

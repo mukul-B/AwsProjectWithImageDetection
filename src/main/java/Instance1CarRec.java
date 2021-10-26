@@ -1,10 +1,8 @@
-import software.amazon.awssdk.services.sqs.SqsClient;
-
 import java.util.List;
 
 public class Instance1CarRec {
     public static void main(String[] args) {
-        String queueName = "queueM";
+        String queueName = "queueCarImages";
         String bucketName="unr-cs442";
         SQSOperations sw = new SQSOperations();
         DetectLabels fg = new DetectLabels();
